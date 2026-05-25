@@ -45,8 +45,7 @@
         name="favorite"
         type="checkbox"
         class="form-check-input"
-        v
-        model="contactLocal.favorite"
+        v-model="contactLocal.favorite"
       />
       <label for="favorite" class="form-check-label">
         <strong>Liên hệ yêu thích</strong>
@@ -106,16 +105,16 @@ export default {
         ),
     });
     return {
-      contactLocal: this.contact,
+      contactLocal: { ...this.contact },
       contactFormSchema,
     };
   },
   methods: {
     submitContact() {
-      this.$emit("submit.contact", this.contacLocal);
+      this.$emit("submit:contact", this.contactLocal);
     },
     deleteContact() {
-      this.$emit("delete.contact", this.contacLocal);
+      this.$emit("delete:contact", this.contactLocal);
     },
     Cancel() {
       const reply = confirm(
